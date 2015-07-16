@@ -16,7 +16,7 @@ PM> Install-Package sw-ui-bootstrap
 ```
 
 ### Dependencies
-	- {@link http://angular-ui.github.io/bootstrap/ ui.bootstrap}
+	- [ui.bootstrap](http://angular-ui.github.io/bootstrap/)
 
 	
 ### Modules	
