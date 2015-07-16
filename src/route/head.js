@@ -26,6 +26,7 @@
     * 
     * @example
     <pre>
+     * var app = angular.module('app', ['ngRoute','sw.ui.bootstrap']);
      * app.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/tweets', {
             templateUrl: 'app/views/streamed-tweets.html',
