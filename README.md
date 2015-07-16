@@ -28,12 +28,14 @@ This module contains form controls
 	</dl>
 </div>
 
+<hr/>
+
 #### [route](http://swaksoft.com/docs/directives/docs/#/api/sw.ui.bootstrap.route)
 This module contains directives that listen to the AngularJS $route events such as the $routeChangeStart event
 <div>
 	<dl>
 		<dt><a href="http://swaksoft.com/docs/directives/docs/#/api/sw.ui.bootstrap.route.directive:head">head</a> </dt>
-		<dd>Directive inspired by [angular-route-styles](https://github.com/tennisgent/angular-route-styles). It supports media formats as well.</dd>
+		<dd>Directive inspired by <a href="https://github.com/tennisgent/angular-route-styles">angular-route-styles</a>. It supports media formats as well.</dd>
 	</dl>
 </div>
 
