@@ -5,8 +5,13 @@
     * @ngdoc overview
     * @name sw.ui.bootstrap.form
  
-    * @description This module contains form controls
-    * - {@link sw.ui.bootstrap.form.directive:swFormField swFormField} directive    
+    * @description 
+	#### Dependencies
+	- {@link http://angular-ui.github.io/bootstrap/ ui.bootstrap}
+	
+	#### Description
+	This module contains form controls
+    * - {@link sw.ui.bootstrap.form.directive:swFormField swFormField} directive
     */
     angular.module('sw.ui.bootstrap.form', ['ui.bootstrap']);
     
