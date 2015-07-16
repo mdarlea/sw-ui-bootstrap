@@ -40,8 +40,7 @@
                     'ui-bootstrap-tpls.min.js',
                     '<%= concat.dist_tpls.dest %>'
                 ],
-				styles: [
-					'bootstrap.min.css',
+				styles: [					
 					'bootstrap-theme.min.css'
 				],
                 title: '<%= pkg.name %>',
