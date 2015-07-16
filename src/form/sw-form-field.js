@@ -33,7 +33,7 @@
     * @param {boolean} [inline=false] 
     *   If true then the 'form-inline' css bootstrap class is used. 
     *   If false then the 'form-group' css class is used    * 
-    * @param {ngModel} ngModel The {@link ng.directive:ngModel ngModel} directive attached to the associated input field
+    * @param {ngModel} ngModel The {@link https://docs.angularjs.org/api/ng/directive/ngModel ngModel} directive attached to the associated input field
     * @param {Object} options Additional field options 
     * @param {string} [options.formatYear='yy'] Available for date field type.
     * @param {Number} [options.startingDay=1] Available for date field type. 

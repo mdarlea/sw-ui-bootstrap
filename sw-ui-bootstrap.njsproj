@@ -26,13 +26,15 @@
     <Folder Include="docs\" />
     <Folder Include="src\form\" />
     <Folder Include="src\form\test\" />
+    <Folder Include="src\route\" />
     <Folder Include="template\" />
     <Folder Include="src\" />
     <Folder Include="template\form\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="gruntfile.js" />
-    <Compile Include="src\form\form-field.js" />
+    <Compile Include="src\form\sw-form-field.js" />
+    <Compile Include="src\route\head.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />

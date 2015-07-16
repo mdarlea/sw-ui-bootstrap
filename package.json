@@ -1,6 +1,6 @@
 {
     "name": "sw-ui-bootstrap",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "description": "AngularJS directives for Bootstrap",
     "main": "index.js",
     "scripts": {

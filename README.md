@@ -28,6 +28,15 @@ This module contains form controls
 	</dl>
 </div>
 
+#### [route](http://swaksoft.com/docs/directives/docs/#/api/sw.ui.bootstrap.route)
+This module contains directives that listen to the AngularJS $route events such as the $routeChangeStart event
+<div>
+	<dl>
+		<dt><a href="http://swaksoft.com/docs/directives/docs/#/api/sw.ui.bootstrap.route.directive:head">head</a> </dt>
+		<dd>Directive inspired by [angular-route-styles](https://github.com/tennisgent/angular-route-styles). It supports media formats as well.</dd>
+	</dl>
+</div>
+
 [npm-image]: https://img.shields.io/npm/v/sw-ui-bootstrap.svg
 [npm-url]: https://npmjs.org/package/sw-ui-bootstrap
 [downloads-image]: https://img.shields.io/npm/dm/sw-ui-bootstrap.svg
