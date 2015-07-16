@@ -13,6 +13,7 @@ lib-cov
 .DS_Store
 .ntvs_analysis.dat
 nuget.exe
+*.nupkg
 
 .npmignore
 

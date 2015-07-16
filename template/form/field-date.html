@@ -1,6 +1,7 @@
 ﻿<div class="input-group">
     <input type="text"
            class="form-control"
+           placeholder="{{$parent.placeholder}}"
            datepicker-popup="{{$parent.fieldOptions.format}}"
            data-ng-model="$parent.ngModel"
            is-open="$parent.opened"
@@ -9,7 +10,7 @@
            datepicker-options="$parent.dateOptions"
            date-disabled="$parent.disabled(date, mode)"
            ng-required="{{$parent.fieldOptions.required}}"
-           close-text="Close"/>
+           close-text="Close" />
     <span class="input-group-btn">
         <button type="button"
                 class="btn btn-default"

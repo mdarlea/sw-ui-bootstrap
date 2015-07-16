@@ -8,8 +8,7 @@
     * @description This module contains form controls
     * - {@link sw.ui.bootstrap.form.directive:swFormField swFormField} directive    
     */
-    angular.module('sw.ui.bootstrap.form', [])
-        .constant('formTemplatePath', 'template/form/');
+    angular.module('sw.ui.bootstrap.form', ['ui.bootstrap.datepicker']);
     
     /**
     * @ngdoc directive
@@ -37,17 +36,17 @@
     * @param {boolean} [options.required=false] True if the field is required, False otherwise
     * 
     * @example
-    <example module="sw.ui.bootstrap.form">
+    <example module="sw.ui.bootstrap">
      <file name="index.html">         
         <sw-form-field label="Birth Date:" placeholder="Birth Date" type="date" data-ng-model="birthDate"></sw-form-field>       
      </file>
     </example>
     */
     angular.module('sw.ui.bootstrap.form', [])
-        .controller("FormController", ["$scope", 'formTemplatePath', function ($scope, formTemplatePath) {
+        .controller("FormController", ["$scope", function ($scope) {
             function getTemplate(type) {
                 var name = (type) ? type : "text";
-                return (formTemplatePath + "field-" + name + ".html");
+                return ("template/form/field-" + name + ".html");
             }
             
             function isDate(type) {
@@ -88,7 +87,7 @@
                 $scope.opened = true;
             };
         }])
-        .directive('swFormField', ['formTemplatePath', function (formTemplatePath) {
+        .directive('swFormField', [function () {
             return {
                 restrict: 'EA',
                 require: '?ngModel',
@@ -102,7 +101,7 @@
                     ngModel: '='
                 },
                 controller: 'FormController',
-                templateUrl: formTemplatePath + 'form-field.html'
+                templateUrl: 'template/form/form-field.html'
             };
         }]);
 })();

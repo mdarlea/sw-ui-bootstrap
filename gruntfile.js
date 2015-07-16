@@ -2,6 +2,24 @@
     grunt.initConfig({
         dist: 'dist',
         pkg: grunt.file.readJSON('package.json'),
+        html2js: {
+            dist: {
+                options: {
+                    module: null, // no bundle module for all the html2js templates
+                    base: '.'
+                },
+                files: [{
+                        expand: true,
+                        src: ['template/**/*.html'], ext: '.html.js'
+                    }]
+            }
+        },
+        jshint: {
+            files: ['Gruntfile.js', 'src/**/*.js'],
+            options: {
+                jshintrc: '.jshintrc'
+            }
+        },
         debug: {
             options: {
                 open: false // do not open node-inspector in Chrome automatically 
@@ -19,6 +37,7 @@
                 dest: '<%= dist %>/docs',
                 scripts: [
                     'angular.js',
+                    'ui-bootstrap-tpls.min.js',
                     '<%= concat.dist_tpls.dest %>'
                 ],
                 title: '<%= pkg.name %>',
@@ -39,6 +58,8 @@
         clean: ['<%= dist %>']
     });
     
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-html2js');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-angular-build');
@@ -47,6 +68,9 @@
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-clean');
     
-    grunt.registerTask('test', ['clean', 'build','ngdocs']);
+    grunt.registerTask('before-test', ['html2js', 'clean']);
+
+    grunt.registerTask('test', ['before-test', 'build', 'ngdocs']);
+
     grunt.registerTask('default', ['test', 'connect']);
 };
