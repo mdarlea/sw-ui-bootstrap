@@ -15,12 +15,12 @@ npm install sw-ui-bootstrap --save-dev
 PM> Install-Package sw-ui-bootstrap
 ```
 
-### Dependencies
+#### Dependencies
 	- [ui.bootstrap](http://angular-ui.github.io/bootstrap/)
 
 	
 ### Modules	
-#### {@link http://swaksoft.com/docs/directives/docs/#/api/sw.ui.bootstrap.form form}
+#### [form](http://swaksoft.com/docs/directives/docs/#/api/sw.ui.bootstrap.form)
 This module contains form controls
 
 	<dl>
