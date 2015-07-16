@@ -15,18 +15,18 @@ npm install sw-ui-bootstrap --save-dev
 PM> Install-Package sw-ui-bootstrap
 ```
 
-#### Dependencies
-	- [ui.bootstrap](http://angular-ui.github.io/bootstrap/)
+### Dependencies
+[ui.bootstrap](http://angular-ui.github.io/bootstrap/)
 
-	
 ### Modules	
 #### [form](http://swaksoft.com/docs/directives/docs/#/api/sw.ui.bootstrap.form)
 This module contains form controls
-
+<div>
 	<dl>
 		<dt><a href="http://swaksoft.com/docs/directives/docs/#/api/sw.ui.bootstrap.form.directive:swFormField">swFormField</a> </dt>
 		<dd>Renders a form field. The following field types are supported: text, date</dd>
 	</dl>
+</div>
 
 [npm-image]: https://img.shields.io/npm/v/sw-ui-bootstrap.svg
 [npm-url]: https://npmjs.org/package/sw-ui-bootstrap
