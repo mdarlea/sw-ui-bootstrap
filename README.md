@@ -6,7 +6,7 @@
 
 ### Getting Started
 
-```shell
+```
 npm install sw-ui-bootstrap --save-dev
 ```
 
