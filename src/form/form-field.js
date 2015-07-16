@@ -8,7 +8,7 @@
     * @description This module contains form controls
     * - {@link sw.ui.bootstrap.form.directive:swFormField swFormField} directive    
     */
-    angular.module('sw.ui.bootstrap.form', ['ui.bootstrap.datepicker']);
+    angular.module('sw.ui.bootstrap.form', ['ui.bootstrap']);
     
     /**
     * @ngdoc directive
@@ -38,11 +38,15 @@
     * @example
     <example module="sw.ui.bootstrap">
      <file name="index.html">         
-        <sw-form-field label="Birth Date:" placeholder="Birth Date" type="date" data-ng-model="birthDate"></sw-form-field>       
+        <sw-form-field label="Birth Date:" 
+                       placeholder="Birth Date" 
+                       type="date" 
+                       data-ng-model="birthDate">
+        </sw-form-field>
      </file>
     </example>
     */
-    angular.module('sw.ui.bootstrap.form', [])
+    angular.module('sw.ui.bootstrap.form')
         .controller("FormController", ["$scope", function ($scope) {
             function getTemplate(type) {
                 var name = (type) ? type : "text";

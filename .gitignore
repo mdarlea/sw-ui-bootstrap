@@ -26,6 +26,7 @@ pids
 logs
 results
 dist
+distt
 # test coverage files
 coverage/
 obj/
