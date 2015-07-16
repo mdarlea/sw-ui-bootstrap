@@ -7,17 +7,17 @@
 ### Getting Started
 
 ```shell
-npm install grunt-angular-build --save-dev
+npm install sw-ui-bootstrap --save-dev
 ```
 
-### [![AngularJS Common]][nuget-url]
+### [AngularJS Common][nuget-url]
 ```
 PM> Install-Package sw-ui-bootstrap
 ```
 
 #### Modules
 <div class="description">
-	<h4 id="description_-providers"> <a href="http://swaksoft.com/docs/directives/docs/#/api/sw.ui.bootstrap.form">sw.ui.bootstrap.form</a></h4>
+	<h4 id="description_-providers"> <a href="http://swaksoft.com/docs/directives/docs/#/api/sw.ui.bootstrap.form">form</a></h4>
 	<dl>
 		<dt><a href="http://swaksoft.com/docs/directives/docs/#/api/sw.ui.bootstrap.form.directive:swFormField">swFormField</a> </dt>
 		<dd>Renders a form field. The following field types are supported: text, date</dd>
