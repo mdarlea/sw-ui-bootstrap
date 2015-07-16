@@ -1,0 +1,36 @@
+tmp
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+*.swp
+*.swo
+*.tmp
+.DS_Store
+.ntvs_analysis.dat
+nuget.exe
+
+.npmignore
+
+# User-specific files
+*.suo
+*.user
+*.sln.docstates
+
+pids
+logs
+results
+dist
+# test coverage files
+coverage/
+obj/
+bin/
+
+node_modules
+npm-debug.log
+
+template/**/*.js
