@@ -149,6 +149,7 @@
         .directive('swFormField', [function () {
             return {
                 restrict: 'EA',
+                replace:true,
                 require: '?ngModel',
                 scope: {
                     label: '@',
