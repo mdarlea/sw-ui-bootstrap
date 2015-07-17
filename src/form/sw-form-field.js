@@ -76,18 +76,17 @@
         <div data-ng-controller="PersonController" class="container">
             <form role="form">
                 <sw-form-field label="Name:" 
-                       placeholder="Name" 
-                       type="text" 
-                       data-ng-model="person.name">
+                        placeholder="Name" 
+                        type="text" 
+                        data-ng-model="person.name">
                 </sw-form-field>     
                 <sw-form-field label="Birth Date:" 
-                       placeholder="Birth Date" 
-                       type="date" 
-                       data-ng-model="person.dob">
+                        placeholder="Birth Date" 
+                        type="date" 
+                        data-ng-model="person.dob">
                 </sw-form-field>
-            </form>
+            </form>     
      
-            <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
             <div class="row">
                 <div class="col-md-4">
                     <b>{{person.name}}</b> was born on <b>{{person.dobText}}</b>

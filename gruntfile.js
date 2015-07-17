@@ -40,9 +40,6 @@
                     'ui-bootstrap-tpls.min.js',
                     '<%= concat.dist_tpls.dest %>'
                 ],
-				styles: [					
-					'bootstrap-theme.min.css'
-				],
                 title: '<%= pkg.name %>',
                 html5Mode: false,
                 sourceLink: 'https://github.com/mdarlea/sw-ui-bootstrap/blob/master/{{file}}'
