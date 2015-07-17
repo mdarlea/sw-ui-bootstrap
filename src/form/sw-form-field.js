@@ -44,35 +44,40 @@
     <doc:example module="app">      
       <doc:source>        
         <script>
-        (function () {
-        'use strict';
-        angular.module('app',['sw.ui.bootstrap'])
-         .controller('PersonController', ['$scope', function ($scope) {
-            $scope.person = {
-                name: "Michelle Darlea",
-                dob: new Date(1976,4,23),
-                refresh: function() {
-                   this.dobText = formatDate(this.dob);
-                }
-            };    
+            (function () {
+            'use strict';
+            angular.module('app',['sw.ui.bootstrap'])
+             .controller('PersonController', ['$scope', function ($scope) {
+                $scope.person = {
+                    name: "Michelle Darlea",
+                    dob: new Date(1976,4,23),
+                    refresh: function() {
+                       this.dobText = formatDate(this.dob);
+                    }
+                };    
      
-             $scope.$watch('person.dob', function (newVal, oldVal) {
-                if (newVal !== oldVal) {
-                   $scope.person.refresh();
-                }
-              },true);
+                 $scope.$watch('person.dob', function (newVal, oldVal) {
+                    if (newVal !== oldVal) {
+                       $scope.person.refresh();
+                    }
+                  },true);
      
-            var formatDate= function(dt) {
-                if(!dt) return null;
+                var formatDate= function(dt) {
+                    if(!dt) return null;
      
-                var date = new Date(dt);
-                return date.toLocaleDateString("en-US")
-            };            
+                    var date = new Date(dt);
+                    return date.toLocaleDateString("en-US")
+                };            
             
-            $scope.person.refresh();
-          }]);
-        })();     
+                $scope.person.refresh();
+              }]);
+            })();     
         </script>        
+        <style>
+          .btn-calendar {
+              margin-bottom: 10px;
+          }
+        </style> 
         <div data-ng-controller="PersonController" class="container">
             <form role="form">
                 <sw-form-field label="Name:" 
