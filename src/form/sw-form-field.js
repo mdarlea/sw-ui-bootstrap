@@ -41,15 +41,61 @@
     * @param {boolean} [options.required=false] True if the field is required, False otherwise
     * 
     * @example
-    <example module="sw.ui.bootstrap">
-     <file name="index.html">         
-        <sw-form-field label="Birth Date:" 
+    <doc:example module="app">      
+      <doc:source>        
+        <script>
+        (function () {
+        'use strict';
+        angular.module('app',['sw.ui.bootstrap'])
+         .controller('PersonController', ['$scope', function ($scope) {
+            $scope.person = {
+                name: "Michelle Darlea",
+                dob: new Date(1976,4,23),
+                refresh: function() {
+                   this.dobText = formatDate(this.dob);
+                }
+            };    
+     
+             $scope.$watch('person.dob', function (newVal, oldVal) {
+                if (newVal !== oldVal) {
+                   $scope.person.refresh();
+                }
+              },true);
+     
+            var formatDate= function(dt) {
+                if(!dt) return null;
+     
+                var date = new Date(dt);
+                return date.toLocaleDateString("en-US")
+            };            
+            
+            $scope.person.refresh();
+          }]);
+        })();     
+        </script>        
+        <div data-ng-controller="PersonController" class="container">
+            <form role="form">
+                <sw-form-field label="Name:" 
+                       placeholder="Name" 
+                       type="text" 
+                       data-ng-model="person.name">
+                </sw-form-field>     
+                <sw-form-field label="Birth Date:" 
                        placeholder="Birth Date" 
                        type="date" 
-                       data-ng-model="birthDate">
-        </sw-form-field>
-     </file>
-    </example>
+                       data-ng-model="person.dob">
+                </sw-form-field>
+            </form>
+     
+            <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+            <div class="row">
+                <div class="col-md-4">
+                    <b>{{person.name}}</b> was born on <b>{{person.dobText}}</b>
+                </div>               
+            </div>            
+        </div>
+      </doc:source>
+    </doc:example>
     */
     angular.module('sw.ui.bootstrap.form')
         .controller("FormController", ["$scope", function ($scope) {
@@ -69,11 +115,11 @@
                         startingDay: 1,
                         minDate: new Date()
                     };
-                    $scope.dateOptions = $.extend(true, {}, defaultDateOptions, options);
+                    $scope.dateOptions = angular.extend({}, defaultDateOptions, options);
                 } else {
                     $scope.dateOptions = null;
                 }
-                $.extend(true, $scope.fieldOptions, options);
+                angular.extend($scope.fieldOptions, options);
             }
             
             $scope.fieldOptions = {
