@@ -10,7 +10,7 @@
 npm install sw-ui-bootstrap --save-dev
 ```
 
-### [AngularJS Common][nuget-url]
+### [AngularJS Directives For Bootsrap][nuget-url]
 ```
 PM> Install-Package sw-ui-bootstrap
 ```
