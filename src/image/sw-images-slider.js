@@ -15,6 +15,7 @@
     *
     * @param {Array} source An array that contains the names of the images that must be pre-loaded
     * @param {string} filter Defines the full image path. Use the {0} placeholder for the image name. Example: '/Content/images/{0}.jpg'
+    * @param {string} [bgClass='slider__background'] The background CSS class
     * 
     * @example
     <doc:example module="app">      
@@ -29,13 +30,15 @@
             })();     
         </script>        
         <style>
-             .slider__background {
-                position: absolute; top: 0;left: 0;
-                width: 100%; height: 100%;
+             .background {
+                position: relative; 
+                top: 0;left: 0;
+                width: 300px; 
+                height: 280px;
                 background-position:center; 
-                background-repeat:no-repeat;
-                -ms-background-size:cover;
-                background-size:cover;
+                background-repeat:no-repeat;       
+                -ms-background-size:300px 280px;
+                background-size:300px 280px;
             }
            
             .beach,
@@ -50,30 +53,34 @@
                 transition:background-image 2s, transform 2s;
             }
 
-            .slider__background.beach {
-                background-image: url('images/beach.jpg');
+            .background.beach {
+                background-image: url('/Content/images/beach.jpg');
             }
 
-            .slider__background.green {
-                background-image: url('images/green.jpg');
+            .background.green {
+                background-image: url('/Content/images/green.jpg');
             }
 
-            .slider__background.mountain {
-                background-image: url('images/mountain.jpg');
+            .background.mountain {
+                background-image: url('/Content/images/mountain.jpg');
             }
 
-            .slider__background.nature1 {
-                background-image: url('images/nature1.jpg');
+            .background.nature1 {
+                background-image: url('/Content/images/nature1.jpg');
             }
 
-            .slider__background.nature3 {
-                background-image: url('images/nature3.jpg');
+            .background.nature3 {
+                background-image: url('/Content/images/nature3.jpg');
             }          
         </style> 
         <div data-ng-controller="HomeController" class="container">     
             <div class="row">
-                <div class="col-md-4">
-                   <sw-images-slider class="nature1" source="images" filter="/Content/images/{0}.jpg"></sw-images-slider>
+                <div class="col-md-4">                   
+                   <sw-images-slider class="nature1" 
+                                     source="images" 
+                                     filter="/Content/images/{0}.jpg" 
+                                     bg-class="background">
+                   </sw-images-slider>
                 </div>               
             </div>            
         </div>
@@ -91,12 +98,13 @@
                 replace: true,
                 scope: {
                     filter: '@',
-                    source:'='
+                    source: '=',
+                    bgClass: "@"
                 },
                 controller: 'ImagesSliderCtrl',
                 template: '<div></div>',
                 link: function (scope, elm, attr) {
-                    var css = "slider__background";
+                    var css = scope.bgClass || "slider__background";
                     
                     if (!elm.hasClass(css)) {
                         elm.addClass(css);

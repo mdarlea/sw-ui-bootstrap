@@ -66,7 +66,7 @@
                 var loader = new PreLoader(imgs, {
                    onComplete: function() {
                         for (var ii = 0; ii < this.completed.length; ii++) {
-                            that.backgroundImages.push(that._(getImageName)(this.comleted[ii],imgFilter));
+                            that.backgroundImages.push(that._(getImageName)(this.completed[ii],imgFilter));
                         }
                         for (var j = 0; j < this.errors.length; j++) {
                              that._unloadedImages.push(that._(getImageName)(this.errors[j], imgFilter));
