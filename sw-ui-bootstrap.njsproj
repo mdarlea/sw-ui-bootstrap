@@ -24,6 +24,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="docs\" />
+    <Folder Include="docs\css\" />
     <Folder Include="src\form\" />
     <Folder Include="src\form\test\" />
     <Folder Include="src\image\" />
@@ -36,6 +37,7 @@
     <Compile Include="gruntfile.js" />
     <Compile Include="src\form\sw-form-field.js" />
     <Compile Include="src\image\ImageLoader.js" />
+    <Compile Include="src\image\sw-images-slider.js" />
     <Compile Include="src\route\head.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />

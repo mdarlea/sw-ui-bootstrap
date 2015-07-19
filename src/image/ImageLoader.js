@@ -34,6 +34,8 @@
             */            
             this.backgroundImages = [];
 
+            this._unloadedImages = [];
+
             this.idx = 0;
         };
             
@@ -50,16 +52,13 @@
             };
                 
             function processed(imgName, images, callback) {
-                var css = this.backgroundImages;
-                css.push(imgName);
-                if (css.length === images.length) {
+                if (this.backgroundImages.length + this._unloadedImages.length === images.length) {
                     callback();
                     this.loading = false;
                 }
             };
                 
             function loadImage(images, imgFilter, callback) {
-                var unloadedImages = [];
                 var that = this;
                 for (var i = 0; i < images.length; i++) {
                     var name = images[i];
@@ -71,14 +70,17 @@
                     image.onload = function (img) {
                         var imgName = that._(getImageName)(img);
                         console.log("Image loaded " + img.target.href);
+                        
+                        that.backgroundImages.push(imgName);
                         that._(processed)(imgName, images, callback);
                     };
                         
                     // handle failure
                     image.onerror = function (img) {
                         var imgName = that._(getImageName)(img);
-                        unloadedImages.push(imgName);
                         console.log("Could not load image " + img.target.href);
+
+                        that._unloadedImages.push(imgName);
                         that._(processed)(imgName, images, callback);
                     };
                 }
@@ -124,6 +126,7 @@
                     this.loading = true;
                     this.idx = 0;
                     this.backgroundImages = [];
+                    this._unloadedImages = [];
                     this._(loadImage)(images, imgFilter, callback);
                 },
                     
