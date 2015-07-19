@@ -30,7 +30,7 @@ This module contains form controls
 
 <hr/>
 
-#### [route](http://swaksoft.com/docs/directives/docs/#/api/sw.ui.bootstrap.image)
+#### [image](http://swaksoft.com/docs/directives/docs/#/api/sw.ui.bootstrap.image)
 This module contains image processing directives and components
 <div>
 	<dl>
