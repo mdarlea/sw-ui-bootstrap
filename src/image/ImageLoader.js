@@ -37,38 +37,62 @@
             this.idx = 0;
         };
             
-       ImageLoader.prototype = (function () {
-            function loadImage(name, counter, imgFilter, callback) {
-                var imgPath = imgFilter.replace("{0}", name);
-                    
-                var image = new Image();
-                image.src = imgPath;
-                var that = this;
-                image.onload = function (img) {
-                    console.log("Image loaded " + img);
-                    var css = that.backgroundImages;
-                    css.push(name);
-                    if (css.length === counter) {
-                        callback();
-                        that.loading = false;
+        ImageLoader.prototype = (function () {
+            function getImageName(img) {
+                var imgName = img && img.target && img.target.nameProp;
+                if (imgName) {
+                    var pos = imgName.lastIndexOf('.');
+                    if (pos > 0) {
+                        imgName = imgName.substring(0, pos);
                     }
-                };
-                    
-                // handle failure
-                image.onerror = function (err) {
-                    console.log("Could not load image " + imgPath);
-                };
+                }
+                return imgName;
             };
-
+                
+            function processed(imgName, images, callback) {
+                var css = this.backgroundImages;
+                css.push(imgName);
+                if (css.length === images.length) {
+                    callback();
+                    this.loading = false;
+                }
+            };
+                
+            function loadImage(images, imgFilter, callback) {
+                var unloadedImages = [];
+                var that = this;
+                for (var i = 0; i < images.length; i++) {
+                    var name = images[i];
+                    var imgPath = imgFilter.replace("{0}", name);
+                        
+                    var image = new Image();
+                    image.src = imgPath;
+                        
+                    image.onload = function (img) {
+                        var imgName = that._(getImageName)(img);
+                        console.log("Image loaded " + img.target.href);
+                        that._(processed)(imgName, images, callback);
+                    };
+                        
+                    // handle failure
+                    image.onerror = function (img) {
+                        var imgName = that._(getImageName)(img);
+                        unloadedImages.push(imgName);
+                        console.log("Could not load image " + img.target.href);
+                        that._(processed)(imgName, images, callback);
+                    };
+                }
+            };
+                
             return {
                 constructor: ImageLoader,
                     
-                    
                 getFirst: function () {
-                    return (this.idx > 0) ? this.backgroundImages[0] : "";
+                    return this.backgroundImages.length > 0 && this.backgroundImages[0];
                 },
                 getCurrent: function () {
-                    return this.backgroundImages[this.idx];
+                    var len = this.backgroundImages.length;
+                    return this.idx <= (len - 1) && this.backgroundImages[this.idx];
                 },
                 getNext: function () {
                     if (this.idx === (this.backgroundImages.length - 1)) {
@@ -77,46 +101,38 @@
                         this.idx++;
                     }                        ;
                     return this.getCurrent();
-                    },
+                },
                     
                 /**
-                * @ngdoc method
-                * @name sw.ui.bootstrap.image.ImageLoader#load
-                * @methodOf sw.ui.bootstrap.image.ImageLoader
-                * @description Preoads a list of images
-                * @param {Array} images The names of the images that must be preloaded
-                * @param {string} imgFilter Defines the full image path. Use the {0} placeholder for the image name
-                 Example: 
-                 <pre>
-                    var images=['image1.png','image2.png'];
-                    var loader = new ImageLoader();
-                    loader.load(images, '/Content/images/{0}.jpg', function() {
-                        console.log("Images successfully preloaded");
-                    });
-                 </pre>
-                * @param {function} callback A function that is called after all images were successfully loaded
-                */
-                load: function (images, imgFilter, callback) {
+            * @ngdoc method
+            * @name sw.ui.bootstrap.image.ImageLoader#load
+            * @methodOf sw.ui.bootstrap.image.ImageLoader
+            * @description Preoads a list of images
+            * @param {Array} images The names of the images that must be preloaded
+            * @param {string} imgFilter Defines the full image path. Use the {0} placeholder for the image name
+                Example: 
+                <pre>
+                var images=['image1.png','image2.png'];
+                var loader = new ImageLoader();
+                loader.load(images, '/Content/images/{0}.jpg', function() {
+                    console.log("Images successfully preloaded");
+                });
+                </pre>
+            * @param {function} callback A function that is called after all images were successfully loaded
+            */
+            load: function (images, imgFilter, callback) {
                     this.loading = true;
                     this.idx = 0;
-                    if (imgFilter) {
-                        this.backgroundImages = [];
-                        for (var i = 0; i < images.length; i++) {
-                            this._(loadImage)(images[i], images.length, imgFilter, callback);
-                        }
-                    } else {
-                        this.backgroundImages = images;
-                        callback();
-                        this.loading = false;
-                    }
-                },                    
+                    this.backgroundImages = [];
+                    this._(loadImage)(images, imgFilter, callback);
+                },
                     
                 _: function (callback) {
                     var self = this;
                     return function () { return callback.apply(self, arguments); };
-                    }
                 }
-            })();
+            }
+        })();
 
         return ImageLoader;
     }]);
