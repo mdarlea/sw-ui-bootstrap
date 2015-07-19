@@ -42,7 +42,7 @@ This module contains image processing directives and components
 <hr/>
 
 #### [route](http://swaksoft.com/docs/directives/docs/#/api/sw.ui.bootstrap.route)
-This module contains directives that listen to the AngularJS $route events such as the $routeChangeStart event
+This module contains directives that listen to the AngularJS route events such as the $routeChangeStart event
 <div>
 	<dl>
 		<dt><a href="http://swaksoft.com/docs/directives/docs/#/api/sw.ui.bootstrap.route.directive:head">head</a> </dt>

@@ -4,7 +4,7 @@
     /**
     * @ngdoc service
     * @name sw.ui.bootstrap.image.PreLoader    
-    * @description preloads a set of images. Inspired by [@link http://fragged.org/preloading-images-using-javascript-the-right-way-and-without-frameworks_744.html Preloading images using javascript, the right way and without frameworks]
+    * @description Preloads a set of images. Inspired by {@link http://fragged.org/preloading-images-using-javascript-the-right-way-and-without-frameworks_744.html Preloading images using javascript, the right way and without frameworks}
     */
     angular.module('sw.ui.bootstrap.image').factory("PreLoader", [function() {
         var PreLoader = function (images, options) {
