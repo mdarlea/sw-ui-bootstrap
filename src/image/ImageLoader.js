@@ -7,7 +7,7 @@
  
     * @description 		
 	This module contains image processing directives and components
-    * - {@link sw.ui.bootstrap.image.directive:swImagesSlider swImagesSlider} object
+    * - {@link sw.ui.bootstrap.image.directive:swImagesSlider swImagesSlider} directive
     */
     angular.module('sw.ui.bootstrap.image', []);
 
