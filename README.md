@@ -30,6 +30,17 @@ This module contains form controls
 
 <hr/>
 
+#### [route](http://swaksoft.com/docs/directives/docs/#/api/sw.ui.bootstrap.image)
+This module contains image processing directives and components
+<div>
+	<dl>
+		<dt><a href="http://swaksoft.com/docs/directives/docs/#/api/sw.ui.bootstrap.image.directive:swImagesSlider">swImagesSlider</a> </dt>
+		<dd>Changes a background image every 3 seconds</dd>
+	</dl>
+</div>
+
+<hr/>
+
 #### [route](http://swaksoft.com/docs/directives/docs/#/api/sw.ui.bootstrap.route)
 This module contains directives that listen to the AngularJS $route events such as the $routeChangeStart event
 <div>
