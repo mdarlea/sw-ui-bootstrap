@@ -30,17 +30,6 @@
             })();     
         </script>        
         <style>
-             .background {
-                position: relative; 
-                top: 0;left: 0;
-                width: 300px; 
-                height: 280px;
-                background-position:center; 
-                background-repeat:no-repeat;       
-                -ms-background-size:300px 280px;
-                background-size:300px 280px;
-            }
-           
             .beach,
             .green,
             .mountain,
@@ -51,6 +40,18 @@
                 -ms-transition: background-image 2s, -ms-transform 2s;
                 -o-transition:background-image 2s, transform 2s;
                 transition:background-image 2s, transform 2s;
+            }
+              
+             .background {
+                position: relative; 
+                top: 0;
+                left: 0;
+                width: 300px; 
+                height: 280px;
+                background-position:center; 
+                background-repeat:no-repeat;       
+                -ms-background-size:300px 280px;
+                background-size:300px 280px;
             }
 
             .background.beach {
