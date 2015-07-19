@@ -35,7 +35,7 @@ This module contains image processing directives and components
 <div>
 	<dl>
 		<dt><a href="http://swaksoft.com/docs/directives/docs/#/api/sw.ui.bootstrap.image.directive:swImagesSlider">swImagesSlider</a> </dt>
-		<dd>Changes a background image every 3 seconds</dd>
+		<dd>Changes a background image every 3 seconds. <a href="http://run.plnkr.co/plunks/ZsCp3L5UPOfz4wrUU9oE/" target="_blank">Plunker Demo</a></dd>
 	</dl>
 </div>
 
