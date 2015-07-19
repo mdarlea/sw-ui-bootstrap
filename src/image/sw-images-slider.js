@@ -4,6 +4,7 @@
     /**
     * @ngdoc directive
     * @name sw.ui.bootstrap.image.directive:swImagesSlider
+    * @requires sw.ui.bootstrap.image.ImageLoader
     * @element div
     * @restrict EA    
     * @scope    

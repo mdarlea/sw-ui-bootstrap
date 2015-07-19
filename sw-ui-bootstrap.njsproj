@@ -37,6 +37,7 @@
     <Compile Include="gruntfile.js" />
     <Compile Include="src\form\sw-form-field.js" />
     <Compile Include="src\image\ImageLoader.js" />
+    <Compile Include="src\image\PreLoader.js" />
     <Compile Include="src\image\sw-images-slider.js" />
     <Compile Include="src\route\head.js" />
   </ItemGroup>
