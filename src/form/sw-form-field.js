@@ -90,6 +90,15 @@
                         type="date" 
                         data-ng-model="person.dob">
                 </sw-form-field>
+                <sw-form-field label="Password:" 
+                        placeholder="Password" 
+                        type="password" 
+                        data-ng-model="person.password" inline="true">
+                    <span class="field-validation-valid text-danger" 
+                          data-valmsg-for="Password" 
+                          data-valmsg-replace="true">
+                    </span>
+                </sw-form-field>
             </form>     
      
             <div class="row">
@@ -151,6 +160,7 @@
                 restrict: 'EA',
                 replace:true,
                 require: '?ngModel',
+                transclude: true,
                 scope: {
                     label: '@',
                     type: '@',

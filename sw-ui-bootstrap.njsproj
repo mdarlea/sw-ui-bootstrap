@@ -19,6 +19,7 @@
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="template\form\field-date.html" />
+    <Content Include="template\form\field-password.html" />
     <Content Include="template\form\field-text.html" />
     <Content Include="template\form\form-field.html" />
   </ItemGroup>
