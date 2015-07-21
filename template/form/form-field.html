@@ -1,8 +1,6 @@
 ﻿<div ng-class="{'form-inline':inline,'form-group':group,'control-group':control}">
     <label class="control-label" ng-if="label">{{label}}</label>
 
-    <div class="controls">
-        <span data-ng-include="template"></span>
-        <span ng-transclude></span>
-    </div>
+    <span data-ng-include="template"></span>
+    <span ng-transclude></span>
 </div>

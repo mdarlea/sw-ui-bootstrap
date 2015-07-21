@@ -64,6 +64,9 @@
           .btn-calendar {
               margin-bottom: 10px;
           }
+          .small-field {
+               width: 50px;
+          }
         </style> 
         <div data-ng-controller="PersonController" class="container">
             <form role="form">
@@ -72,6 +75,11 @@
                         type="text" 
                         data-ng-model="person.name">
                 </sw-form-field>     
+                <sw-form-field label="Age:" 
+                        placeholder="Age" 
+                        css="'small-field'"
+                        data-ng-model="person.age">
+                </sw-form-field>          
                 <sw-form-field label="Birth Date:" 
                         placeholder="Birth Date" 
                         type="date" 
@@ -94,7 +102,8 @@
                 <sw-form-field label="Password:" 
                         placeholder="Password" 
                         type="password" 
-                        data-ng-model="person.password" inline="true">
+                        data-ng-model="person.password"                         
+                        inline="true">
                     <span class="field-validation-valid text-danger" 
                           data-valmsg-for="Password" 
                           data-valmsg-replace="true">
@@ -105,9 +114,10 @@
             <div class="row">
                 <div class="col-md-4">
                     <b>{{person.name}}</b> was born on <b>{{person.dob  | date:'shortDate'}}</b>
-                    <pre class="alert alert-info">Email is: <b>{{person.email}}</b></pre>
+                    <p>Age is: <b>{{person.age}}</b></p>
+                    <p>Email is: <b>{{person.email}}</b></p>
                     <p>Password is: <b>{{person.password}}</b></p>                    
-                    <pre class="alert alert-info">Appointment time is: {{person.appTime | date:'shortTime' }}</pre>
+                    <p>Appointment time is: {{person.appTime | date:'shortTime' }}</p>
                     <p></p>
                 </div>               
             </div>            
@@ -194,7 +204,8 @@
                     title: '@',
                     group: '@',
                     inline: '@',
-                    control:'@',
+                    control: '@',
+                    css: '=',
                     options: '=',
                     ngModel: '='
                 },
