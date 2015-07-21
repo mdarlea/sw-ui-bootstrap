@@ -30,9 +30,12 @@
     * @param {string} label The form field label
     * @param {string} [type='text'] The field type. Acceptable values: 'text', 'password', 'date'
     * @param {string} [placeholder=''] The field watermark
+    * @param {boolean} [group=true] 
+    *   If true then the 'form-group' css bootstrap class is used         
     * @param {boolean} [inline=false] 
-    *   If true then the 'form-inline' css bootstrap class is used. 
-    *   If false then the 'form-group' css class is used    * 
+    *   If true then the 'form-inline' css bootstrap class is used    
+    * @param {boolean} [control=false] 
+    *   If true then the 'control-group' css bootstrap class is used    
     * @param {ngModel} ngModel The {@link https://docs.angularjs.org/api/ng/directive/ngModel ngModel} directive attached to the associated input field
     * @param {Object} options Additional field options 
     * @param {string} [options.formatYear='yy'] Available for date field type.
@@ -51,6 +54,7 @@
                 $scope.person = {
                     name: "Michelle Darlea",
                     dob: new Date(1976,4,23),
+                    email: 'mdarlea@gmail.com',
                     refresh: function() {
                        this.dobText = formatDate(this.dob);
                     }
@@ -90,6 +94,11 @@
                         type="date" 
                         data-ng-model="person.dob">
                 </sw-form-field>
+                <sw-form-field label="E-mail:" 
+                        placeholder="Email"                         
+                        data-ng-model="person.email" control="true">
+                    <p class="help-block">Please provide your E-mail</p>
+                </sw-form-field>
                 <sw-form-field label="Password:" 
                         placeholder="Password" 
                         type="password" 
@@ -98,7 +107,7 @@
                           data-valmsg-for="Password" 
                           data-valmsg-replace="true">
                     </span>
-                </sw-form-field>
+                </sw-form-field>              
             </form>     
      
             <div class="row">
@@ -112,6 +121,15 @@
     */
     angular.module('sw.ui.bootstrap.form')
         .controller("FormController", ["$scope", function ($scope) {
+            setTimeout(function () {
+                $scope.$apply(function () {
+                    if (!$scope.group) {
+                        $scope.group = !$scope.inline && !$scope.control;
+                    }
+                });
+            }, 200);
+
+
             function getTemplate(type) {
                 var name = (type) ? type : "text";
                 return ("template/form/field-" + name + ".html");
@@ -166,7 +184,9 @@
                     type: '@',
                     placeholder: '@',
                     title: '@',
+                    group: '@',
                     inline: '@',
+                    control:'@',
                     options: '=',
                     ngModel: '='
                 },
