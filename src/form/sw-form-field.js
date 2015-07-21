@@ -29,6 +29,7 @@
     *
     * @param {string} label The form field label
     * @param {string} [type='text'] The field type. Acceptable values: 'text', 'password', 'date', 'time'
+    * @param {string} [name=null] The field name
     * @param {string} [placeholder=''] The field watermark
     * @param {boolean} [group=true] 
     *   If true then the 'form-group' css bootstrap class is used         
@@ -98,8 +99,9 @@
                         ng-required=true
                         data-ng-model="person.appTime">
                 </sw-form-field>     
-                <sw-form-field label="E-mail:" 
-                        placeholder="Email"                         
+                <sw-form-field label="E-mail:" name="email"
+                        placeholder="Email"                
+                        ng-required="true"         
                         data-ng-model="person.email" control="true">
                     <p class="help-block">Please provide your E-mail</p>
                 </sw-form-field>                
@@ -218,13 +220,12 @@
                     group: '@',
                     inline: '@',
                     control: '@',
+                    name:'@',
                     css: '=',
                     options: '=',
                     ngModel: '=',
                     ngChange: '=',
                     ngRequired: '=',
-                    ngMinlength: '=',
-                    ngMaxlength: '=',
                     ngPattern: '=',
                     ngTrim: '='
                 },
