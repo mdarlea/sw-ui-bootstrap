@@ -28,7 +28,7 @@
     * Renders a form field. The following field types are supported: text, date
     *
     * @param {string} label The form field label
-    * @param {string} [type='text'] The field type. Acceptable values: 'text', 'date'
+    * @param {string} [type='text'] The field type. Acceptable values: 'text', 'password', 'date'
     * @param {string} [placeholder=''] The field watermark
     * @param {boolean} [inline=false] 
     *   If true then the 'form-inline' css bootstrap class is used. 
