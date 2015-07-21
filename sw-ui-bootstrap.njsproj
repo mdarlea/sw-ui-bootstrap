@@ -21,6 +21,7 @@
     <Content Include="template\form\field-date.html" />
     <Content Include="template\form\field-password.html" />
     <Content Include="template\form\field-text.html" />
+    <Content Include="template\form\field-time.html" />
     <Content Include="template\form\form-field.html" />
   </ItemGroup>
   <ItemGroup>

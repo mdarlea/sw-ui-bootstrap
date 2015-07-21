@@ -28,7 +28,7 @@
     * Renders a form field. The following field types are supported: text, date
     *
     * @param {string} label The form field label
-    * @param {string} [type='text'] The field type. Acceptable values: 'text', 'password', 'date'
+    * @param {string} [type='text'] The field type. Acceptable values: 'text', 'password', 'date', 'time'
     * @param {string} [placeholder=''] The field watermark
     * @param {boolean} [group=true] 
     *   If true then the 'form-group' css bootstrap class is used         
@@ -55,25 +55,8 @@
                     name: "Michelle Darlea",
                     dob: new Date(1976,4,23),
                     email: 'mdarlea@gmail.com',
-                    refresh: function() {
-                       this.dobText = formatDate(this.dob);
-                    }
-                };    
-     
-                 $scope.$watch('person.dob', function (newVal, oldVal) {
-                    if (newVal !== oldVal) {
-                       $scope.person.refresh();
-                    }
-                  },true);
-     
-                var formatDate= function(dt) {
-                    if(!dt) return null;
-     
-                    var date = new Date(dt);
-                    return date.toLocaleDateString("en-US")
-                };            
-            
-                $scope.person.refresh();
+                    appTime: null
+                };
               }]);
             })();     
         </script>        
@@ -94,11 +77,20 @@
                         type="date" 
                         data-ng-model="person.dob">
                 </sw-form-field>
+                <sw-form-field label="Appointment Time:"                        
+                        type="time" 
+                        data-ng-model="person.appTime">
+                </sw-form-field>     
                 <sw-form-field label="E-mail:" 
                         placeholder="Email"                         
                         data-ng-model="person.email" control="true">
                     <p class="help-block">Please provide your E-mail</p>
                 </sw-form-field>
+                <sw-form-field label="Birth Date:" 
+                        placeholder="Birth Date" 
+                        type="date" 
+                        data-ng-model="person.dob">
+                </sw-form-field>     
                 <sw-form-field label="Password:" 
                         placeholder="Password" 
                         type="password" 
@@ -112,7 +104,11 @@
      
             <div class="row">
                 <div class="col-md-4">
-                    <b>{{person.name}}</b> was born on <b>{{person.dobText}}</b>
+                    <b>{{person.name}}</b> was born on <b>{{person.dob  | date:'shortDate'}}</b>
+                    <pre class="alert alert-info">Email is: <b>{{person.email}}</b></pre>
+                    <p>Password is: <b>{{person.password}}</b></p>                    
+                    <pre class="alert alert-info">Appointment time is: {{person.appTime | date:'shortTime' }}</pre>
+                    <p></p>
                 </div>               
             </div>            
         </div>
@@ -139,6 +135,10 @@
                 return type === "date";
             }
             
+            function isTime(type) {
+                return type === "time";
+            }
+            
             function updateFieldOptions(type, options) {
                 if (isDate(type)) {
                     var defaultDateOptions = {
@@ -148,6 +148,14 @@
                     };
                     $scope.dateOptions = angular.extend({}, defaultDateOptions, options);
                 } else {
+                    if (isTime(type)) {
+                        var defaultTimeOptions = {
+                            hstep:1,
+                            mstep: 15,
+                            ismeridian: true
+                        };
+                        $scope.timeOptions = angular.extend({}, defaultTimeOptions, options);
+                    }
                     $scope.dateOptions = null;
                 }
                 angular.extend($scope.fieldOptions, options);
@@ -177,7 +185,7 @@
             return {
                 restrict: 'EA',
                 replace:true,
-                require: '?ngModel',
+                require: ['?ngModel','?ngChange'],
                 transclude: true,
                 scope: {
                     label: '@',
@@ -191,7 +199,10 @@
                     ngModel: '='
                 },
                 controller: 'FormController',
-                templateUrl: 'template/form/form-field.html'
+                templateUrl: 'template/form/form-field.html',
+                link:function(scope, elm, attrs, controllers, $transcludeFn) {
+                    
+                }
             };
         }]);
 })();
