@@ -37,6 +37,10 @@
     * @param {boolean} [control=false] 
     *   If true then the 'control-group' css bootstrap class is used    
     * @param {ngModel} ngModel The {@link https://docs.angularjs.org/api/ng/directive/ngModel ngModel} directive attached to the associated input field
+    * @param {boolean} [ngRequired=false] Sets required attribute if set to true    
+    * @param {string} [ngPattern=null] Sets pattern validation error key if the ngModel value does not match a RegExp found by evaluating the Angular expression given in the attribute value. If the expression evaluates to a RegExp object, then this is used directly. If the expression evaluates to a string, then it will be converted to a RegExp after wrapping it in ^ and $ characters. For instance, "abc" will be converted to new RegExp('^abc$').
+                                       Note: Avoid using the g flag on the RegExp, as it will cause each successive search to start at the index of the last search's match, thus not taking the whole input value into account.
+    * @param {ngChange} [ngChange] The {@link https://docs.angularjs.org/api/ng/directive/ngChange ngChange} directive attached to the associated input field
     * @param {Object} options Additional field options 
     * @param {string} [options.formatYear='yy'] Available for date field type.
     * @param {Number} [options.startingDay=1] Available for date field type. 
@@ -57,6 +61,7 @@
                     email: 'mdarlea@gmail.com',
                     appTime: null
                 };
+                $scope.numbersExpr = /[0-9]/;
               }]);
             })();     
         </script>        
@@ -77,16 +82,20 @@
                 </sw-form-field>     
                 <sw-form-field label="Age:" 
                         placeholder="Age" 
+                        ng-pattern="numbersExpr"
                         css="'small-field'"
+                        ng-required=true
                         data-ng-model="person.age">
                 </sw-form-field>          
                 <sw-form-field label="Birth Date:" 
                         placeholder="Birth Date" 
+                        ng-required=true
                         type="date" 
                         data-ng-model="person.dob">
                 </sw-form-field>
                 <sw-form-field label="Appointment Time:"                        
                         type="time" 
+                        ng-required=true
                         data-ng-model="person.appTime">
                 </sw-form-field>     
                 <sw-form-field label="E-mail:" 
@@ -95,8 +104,8 @@
                     <p class="help-block">Please provide your E-mail</p>
                 </sw-form-field>                
                 <sw-form-field label="Password:" 
-                        placeholder="Password" 
-                        type="password" 
+                        placeholder="Password"                        
+                        type="password"                         
                         data-ng-model="person.password"                         
                         inline="true">
                     <span class="field-validation-valid text-danger" 
@@ -132,7 +141,15 @@
 
 
             function getTemplate(type) {
-                var name = (type) ? type : "text";
+                var name;
+                if (type) {
+                    name = type;
+                } else {
+                    name = "text";
+                }
+                if ($scope.ngPattern) {
+                    name += ("-pattern");
+                }
                 return ("template/form/field-" + name + ".html");
             }
             
@@ -166,15 +183,16 @@
                 angular.extend($scope.fieldOptions, options);
             }
             
-            $scope.fieldOptions = {
-                required: false
-            };
+            $scope.fieldOptions = {};
             
             $scope.$watch('type', function (type) {
                 $scope.template = getTemplate(type);
                 updateFieldOptions(type, $scope.options);
             });
-            
+            $scope.$watch('ngPattern', function() {
+                $scope.template = getTemplate($scope.type);
+            });
+
             $scope.$watch('options', function (newVal, oldVal) {
                 updateFieldOptions($scope.type, newVal);
             }, true);
@@ -202,12 +220,23 @@
                     control: '@',
                     css: '=',
                     options: '=',
-                    ngModel: '='
+                    ngModel: '=',
+                    ngChange: '=',
+                    ngRequired: '=',
+                    ngMinlength: '=',
+                    ngMaxlength: '=',
+                    ngPattern: '=',
+                    ngTrim: '='
                 },
                 controller: 'FormController',
                 templateUrl: 'template/form/form-field.html',
-                link:function(scope, elm, attrs, controllers, $transcludeFn) {
-                    
+                compile: function($elm,$attrs) {
+                    return {
+                        pre: function (scope, elm, attrs) {
+                        },
+                        post : function(scope, elm, attrs, controllers, $transcludeFn) {
+                        }
+                    }
                 }
             };
         }]);

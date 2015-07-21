@@ -9,7 +9,8 @@
            max-date="$parent.fieldOptions.maxDate"
            datepicker-options="$parent.dateOptions"
            date-disabled="$parent.disabled(date, mode)"
-           ng-required="{{$parent.fieldOptions.required}}"
+           ng-required="$parent.ngRequired"
+           ng-change="$parent.ngChange"
            close-text="Close" />
     <span class="input-group-btn">
         <button type="button"
