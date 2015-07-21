@@ -93,12 +93,7 @@
                         placeholder="Email"                         
                         data-ng-model="person.email" control="true">
                     <p class="help-block">Please provide your E-mail</p>
-                </sw-form-field>
-                <sw-form-field label="Birth Date:" 
-                        placeholder="Birth Date" 
-                        type="date" 
-                        data-ng-model="person.dob">
-                </sw-form-field>     
+                </sw-form-field>                
                 <sw-form-field label="Password:" 
                         placeholder="Password" 
                         type="password" 
