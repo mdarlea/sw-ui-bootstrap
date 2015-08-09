@@ -133,15 +133,6 @@
     */
     angular.module('sw.ui.bootstrap.form')
         .controller("FormController", ["$scope", function ($scope) {
-            setTimeout(function () {
-                $scope.$apply(function () {
-                    if (!$scope.group) {
-                        $scope.group = !$scope.inline && !$scope.control;
-                    }
-                });
-            }, 200);
-
-
             function getTemplate(type) {
                 var name;
                 if (type) {
@@ -231,7 +222,15 @@
                 },
                 controller: 'FormController',
                 templateUrl: 'template/form/form-field.html',
-                compile: function($elm,$attrs) {
+                compile: function ($elm, $attrs) {
+                    var isTrue = function(value) {
+                        return $attrs[value] === 'true';
+                    };
+
+                    //default values
+                    if (!$attrs.group) {
+                        $attrs.group = !isTrue('inline') && !isTrue('control');
+                    }
                     return {
                         pre: function (scope, elm, attrs) {
                         },
