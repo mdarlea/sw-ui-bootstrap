@@ -176,6 +176,10 @@
                 angular.extend($scope.fieldOptions, options);
             }
             
+            if (!$scope.inline && !$scope.control && !$scope.group) {
+                $scope.group = "true";
+            }
+
             $scope.fieldOptions = {};
             
             $scope.$watch('type', function (type) {

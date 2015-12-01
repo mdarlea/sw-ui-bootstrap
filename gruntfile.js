@@ -1,4 +1,5 @@
-﻿module.exports = function (grunt) {
+/// <vs AfterBuild='build' />
+module.exports = function (grunt) {
     grunt.initConfig({
         dist: 'dist',
         pkg: grunt.file.readJSON('package.json'),
